@@ -28,15 +28,17 @@ export const loader = async ({params, context, request}) => {
   // optionally set a default variant so you always have an "orderable" product selected
   const selectedVariant =
     product.selectedVariant ?? product?.variants?.nodes[0];
+  const storeDomain = context.storefront.getShopifyDomain();
 
   return json({
     product,
     selectedVariant,
+    storeDomain,
   });
 };
 
 export default function ProductHandle() {
-  const {product, selectedVariant} = useLoaderData();
+  const {product, selectedVariant, storeDomain} = useLoaderData();
   const orderable = selectedVariant?.availableForSale || false;
   const productImage = selectedVariant.image
     ? selectedVariant.image
@@ -72,6 +74,7 @@ export default function ProductHandle() {
             <div className="space-y-2">
               <ShopPayButton
                 variantIds={[selectedVariant?.id]}
+                storeDomain={storeDomain}
                 width={'400px'}
               />
               <AddToCartButton variantId={selectedVariant?.id} />

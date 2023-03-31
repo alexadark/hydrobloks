@@ -35,13 +35,6 @@ async function getCart({storefront}, cartId) {
 
   return cart;
 }
-const shopifyConfig = {
-  storefrontToken: '3b580e70970c4528da70c98e097c2fa0',
-  storeDomain: 'https://hydrogen-preview.myshopify.com',
-  storefrontApiVersion: '2023-01',
-  countryIsoCode: 'US',
-  languageIsoCode: 'en',
-};
 
 export const links = () => {
   return [
@@ -87,22 +80,20 @@ export default function App() {
   const {name} = data.layout.shop;
 
   return (
-    <ShopifyProvider {...shopifyConfig}>
-      <html lang="en">
-        <head>
-          <Seo />
-          <Meta />
-          <Links />
-        </head>
-        <body>
-          <Layout title={name}>
-            <Outlet />
-          </Layout>
-          <ScrollRestoration />
-          <Scripts />
-        </body>
-      </html>
-    </ShopifyProvider>
+    <html lang="en">
+      <head>
+        <Seo />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Layout title={name}>
+          <Outlet />
+        </Layout>
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
   );
 }
 
