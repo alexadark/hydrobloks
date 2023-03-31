@@ -15,26 +15,8 @@ import tailwind from './styles/tailwind-build.css';
 import favicon from '../public/favicon.svg';
 import {Layout} from './components/Layout';
 import {Seo} from '@shopify/hydrogen';
-import {ShopifyProvider} from '@shopify/hydrogen-react';
-import {CART_QUERY} from '~/queries/cart';
 import {defer} from '@shopify/remix-oxygen';
-
-async function getCart({storefront}, cartId) {
-  if (!storefront) {
-    throw new Error('missing storefront client in cart query');
-  }
-
-  const {cart} = await storefront.query(CART_QUERY, {
-    variables: {
-      cartId,
-      country: storefront.i18n.country,
-      language: storefront.i18n.language,
-    },
-    cache: storefront.CacheNone(),
-  });
-
-  return cart;
-}
+import {getCart} from '~/utils/getCart';
 
 export const links = () => {
   return [
@@ -71,7 +53,10 @@ storyblokInit({
 export async function loader({context}) {
   const cartId = await context.session.get('cartId');
   const layout = await context.storefront.query(LAYOUT_QUERY);
-  return defer({layout, cart: cartId ? getCart(context, cartId) : undefined});
+  return defer({
+    layout,
+    cart: cartId ? getCart(context, cartId) : undefined,
+  });
 }
 
 export default function App() {

@@ -1,7 +1,7 @@
 import {useFetcher} from '@remix-run/react';
 import {BsTrash3 as IconRemove} from 'react-icons/bs';
 
-const ItemRemoveButton = ({lineIds}) => {
+const RemoveFromCartButton = ({lineIds}) => {
   const fetcher = useFetcher();
   return (
     <fetcher.Form action="/cart" method="post">
@@ -17,4 +17,4 @@ const ItemRemoveButton = ({lineIds}) => {
   );
 };
 
-export default ItemRemoveButton;
+export default RemoveFromCartButton;

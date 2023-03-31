@@ -1,26 +1,13 @@
 import {useLoaderData} from '@remix-run/react';
 import {json} from '@shopify/remix-oxygen';
 import {CartContent, CartEmpty} from '~/components/cart';
-import {CART_QUERY} from '~/queries/cart';
+
 import {cartAdd, cartCreate, cartRemove} from '~/utils/cartFunctions';
+import {getCart} from '~/utils/getCart';
 
 export const loader = async ({context}) => {
   const cartId = await context.session.get('cartId');
-
-  const cart = cartId
-    ? (
-        await context.storefront.query(CART_QUERY, {
-          variables: {
-            cartId,
-            country: context.storefront.i18n.country,
-            language: context.storefront.i18n.language,
-          },
-          cache: context.storefront.CacheNone(),
-        })
-      ).cart
-    : null;
-
-  return {cart};
+  return json({cart: cartId ? await getCart(context, cartId) : undefined});
 };
 
 export const action = async ({request, context}) => {

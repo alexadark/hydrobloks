@@ -1,6 +1,6 @@
 import {Link} from '@remix-run/react';
 import {Image, Money} from '@shopify/hydrogen-react';
-import ItemRemoveButton from './ItemRemoveButton';
+import RemoveFromCartButton from './RemoveFromCartButton';
 
 const LineItem = ({lineItem}) => {
   const {merchandise, quantity} = lineItem;
@@ -22,7 +22,7 @@ const LineItem = ({lineItem}) => {
         </Link>
         <div className="text-sm text-gray-800">{merchandise.title}</div>
         <div className="text-sm text-gray-800">Qty: {quantity}</div>
-        <ItemRemoveButton lineIds={[lineItem.id]} />
+        <RemoveFromCartButton lineIds={[lineItem.id]} />
       </div>
       <Money data={lineItem.cost.totalAmount} />
     </div>
