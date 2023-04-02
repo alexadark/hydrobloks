@@ -1,22 +1,7 @@
 import {CartIcon} from '../cart/CartIcon';
 import Menu from './Menu';
-import {useFetchers} from '@remix-run/react';
-import {useEffect} from 'react';
 
-const Header = ({cart, openDrawer, isOpen}) => {
-  const fetchers = useFetchers();
-  // Grab all the fetchers that are adding to cart
-  const addToCartFetchers = [];
-  for (const fetcher of fetchers) {
-    if (fetcher?.submission?.formData?.get('cartAction') === 'ADD_TO_CART') {
-      addToCartFetchers.push(fetcher);
-    }
-  }
-  // When the fetchers array changes, open the drawer if there is an add to cart action
-  useEffect(() => {
-    if (isOpen || addToCartFetchers.length === 0) return;
-    openDrawer();
-  }, [addToCartFetchers, isOpen, openDrawer]);
+const Header = () => {
   return (
     <header
       role="banner"
@@ -25,7 +10,7 @@ const Header = ({cart, openDrawer, isOpen}) => {
       <div className="flex justify-between gap-12">
         <h1>Hydrobloks</h1>
         <Menu />
-        <CartIcon cart={cart} openDrawer={openDrawer} />
+        <CartIcon />
       </div>
     </header>
   );
