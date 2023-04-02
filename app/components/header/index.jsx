@@ -1,4 +1,4 @@
-import {CartIcon} from '../cart/CartIcon';
+import {CartDrawer} from '../cart/CartDrawer';
 import Menu from './Menu';
 
 const Header = () => {
@@ -10,7 +10,7 @@ const Header = () => {
       <div className="flex justify-between gap-12">
         <h1>Hydrobloks</h1>
         <Menu />
-        <CartIcon />
+        <CartDrawer />
       </div>
     </header>
   );

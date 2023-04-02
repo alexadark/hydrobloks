@@ -3,6 +3,5 @@ export * from './AddToCartButton';
 export * from './CartLineItems';
 export * from './CartSummary';
 export * from './CheckoutButton';
-export * from './CartDrawer';
 export * from './CartContent';
 export * from './CartEmpty';
