@@ -18,6 +18,15 @@ import {Seo} from '@shopify/hydrogen';
 import {defer} from '@shopify/remix-oxygen';
 import {getCart} from '~/utils/getCart';
 
+export async function loader({context}) {
+  const cartId = await context.session.get('cartId');
+  const layout = await context.storefront.query(LAYOUT_QUERY);
+  return defer({
+    layout,
+    cart: cartId ? getCart(context, cartId) : undefined,
+  });
+}
+
 export const links = () => {
   return [
     {rel: 'stylesheet', href: tailwind},
@@ -49,15 +58,6 @@ storyblokInit({
   use: [apiPlugin],
   components,
 });
-
-export async function loader({context}) {
-  const cartId = await context.session.get('cartId');
-  const layout = await context.storefront.query(LAYOUT_QUERY);
-  return defer({
-    layout,
-    cart: cartId ? getCart(context, cartId) : undefined,
-  });
-}
 
 export default function App() {
   const data = useLoaderData();

@@ -1,9 +1,9 @@
 import {CART_QUERY} from '~/queries/cart';
+
 export async function getCart({storefront}, cartId) {
   if (!storefront) {
     throw new Error('missing storefront client in cart query');
   }
-
   const {cart} = await storefront.query(CART_QUERY, {
     variables: {
       cartId,
