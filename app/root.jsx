@@ -7,10 +7,9 @@ import {
   useLoaderData,
 } from '@remix-run/react';
 import {storyblokInit, apiPlugin} from '@storyblok/react';
-import Feature from './components/bloks/Feature';
-import Grid from './components/bloks/Grid';
+import Hero from './components/bloks/Hero';
+import Text from './components/bloks/Text';
 import Page from './components/bloks/Page';
-import Teaser from './components/bloks/Teaser';
 import tailwind from './styles/tailwind-build.css';
 import favicon from '../public/favicon.svg';
 import {Layout} from './components/Layout';
@@ -48,13 +47,12 @@ export const meta = () => ({
 });
 
 const components = {
-  feature: Feature,
-  grid: Grid,
-  teaser: Teaser,
+  hero: Hero,
+  text: Text,
   page: Page,
 };
 storyblokInit({
-  accessToken: 'NrwSEhxoVgxpHkiWVmQQAwtt',
+  accessToken: 'aVPSgag6Rrp47qg0HOHIbgtt',
   use: [apiPlugin],
   components,
 });
