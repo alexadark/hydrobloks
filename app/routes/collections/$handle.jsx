@@ -27,9 +27,6 @@ export async function loader({params, context, request}) {
   if (!collection) {
     throw new Response(null, {status: 404});
   }
-
-  // json is a Remix utility for creating application/json responses
-  // https://remix.run/docs/en/v1/utils/json
   return json({
     collection,
   });
@@ -47,14 +44,14 @@ export default function Collection() {
   return (
     <>
       <header className="grid w-full gap-8 py-8 justify-items-start">
-        <h1 className="text-4xl whitespace-pre-wrap font-bold inline-block">
+        <h1 className="inline-block text-4xl font-bold whitespace-pre-wrap">
           {collection.title}
         </h1>
 
         {collection.description && (
           <div className="flex items-baseline justify-between w-full">
             <div>
-              <p className="max-w-md whitespace-pre-wrap inherit text-copy inline-block">
+              <p className="inline-block max-w-md whitespace-pre-wrap inherit text-copy">
                 {collection.description}
               </p>
             </div>

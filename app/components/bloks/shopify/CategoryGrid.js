@@ -15,7 +15,7 @@ export const CategoryGrid = ({blok}) => {
       <div className="justify-center gap-5 mx-auto md:flex">
         {categories.items?.map((sbCategory) => {
           const {name, id, image} = sbCategory;
-          const collection = allCollections.nodes.find((c) => c.title === name);
+          const collection = allCollections.find((c) => c.title === name);
           const {handle} = collection;
 
           return (

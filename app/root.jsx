@@ -11,7 +11,7 @@ import Hero from './components/bloks/Hero';
 import Text from './components/bloks/Text';
 import Page from './components/bloks/Page';
 import {
-  // ProductsGrid,
+  ProductsGrid,
   CategoryGrid,
   SingleProduct,
 } from '~/components/bloks/shopify';
@@ -57,6 +57,7 @@ const components = {
   page: Page,
   'single-product': SingleProduct,
   'category-grid': CategoryGrid,
+  'products-grid': ProductsGrid,
 };
 storyblokInit({
   accessToken: 'aVPSgag6Rrp47qg0HOHIbgtt',

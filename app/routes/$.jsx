@@ -33,22 +33,46 @@ export const loader = async ({params, context}) => {
   let sbParams = {
     version: 'draft',
   };
+
   const {collections} = await context.storefront.query(COLLECTIONS_QUERY);
+  const {products} = await context.storefront.query(PRODUCTS_QUERY);
 
   let {data} = await getStoryblokApi().get(`cdn/stories/${slug}`, sbParams);
+
   return json({
     story: data?.story,
-    allCollections: collections,
+    allCollections: collections.nodes,
+    allProducts: products.nodes,
   });
 };
 
 const COLLECTIONS_QUERY = `#graphql
-  query Collections {
+  query  {
     collections(first: 100) {
       nodes {
         handle
         title
       }
     }
+  }
+`;
+
+const PRODUCTS_QUERY = `#graphql
+  query  {
+    products(first: 100) {
+    nodes {
+      title
+      handle
+      variants(first:1) {
+        nodes {
+          id
+          price {
+            currencyCode
+            amount
+          }
+        }
+      }
+    }
+  }
   }
 `;
