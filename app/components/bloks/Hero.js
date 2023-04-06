@@ -6,9 +6,9 @@ const Hero = ({blok}) => {
   return (
     <div className="relative" key={blok._uid} {...storyblokEditable(blok)}>
       <img
-        src={image.filename}
+        src={`${image.filename}/m/0x600`}
         alt={image.alt}
-        className="object-cover w-full h-[400px]"
+        className="object-cover w-full h-[500px]"
       />
 
       <div className="absolute inset-0 flex items-center justify-center text-center text-white">

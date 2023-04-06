@@ -10,6 +10,11 @@ import {storyblokInit, apiPlugin} from '@storyblok/react';
 import Hero from './components/bloks/Hero';
 import Text from './components/bloks/Text';
 import Page from './components/bloks/Page';
+import {
+  // ProductsGrid,
+  CategoryGrid,
+  SingleProduct,
+} from '~/components/bloks/shopify';
 import tailwind from './styles/tailwind-build.css';
 import favicon from '../public/favicon.svg';
 import {Layout} from './components/Layout';
@@ -50,6 +55,8 @@ const components = {
   hero: Hero,
   text: Text,
   page: Page,
+  'single-product': SingleProduct,
+  'category-grid': CategoryGrid,
 };
 storyblokInit({
   accessToken: 'aVPSgag6Rrp47qg0HOHIbgtt',
