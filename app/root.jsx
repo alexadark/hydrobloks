@@ -10,6 +10,8 @@ import {storyblokInit, apiPlugin} from '@storyblok/react';
 import Hero from './components/bloks/Hero';
 import Text from './components/bloks/Text';
 import Page from './components/bloks/Page';
+import Banner from './components/bloks/Banner';
+import PersonalizedBanners from './components/bloks/PersonalizedBanners';
 import {
   ProductsGrid,
   CategoryGrid,
@@ -55,9 +57,11 @@ const components = {
   hero: Hero,
   text: Text,
   page: Page,
+  banner: Banner,
   'single-product': SingleProduct,
   'category-grid': CategoryGrid,
   'products-grid': ProductsGrid,
+  'personalized-banners': PersonalizedBanners,
 };
 storyblokInit({
   accessToken: 'aVPSgag6Rrp47qg0HOHIbgtt',

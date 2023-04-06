@@ -1,6 +1,7 @@
 import {useLoaderData} from '@remix-run/react';
 import {json} from '@shopify/remix-oxygen';
 import ProductGrid from '../../components/ProductGrid';
+import {getCookie, setCookie} from 'react-use-cookie';
 
 const seo = ({data}) => ({
   title: data?.collection?.title,
@@ -41,6 +42,10 @@ export const meta = ({data}) => {
 
 export default function Collection() {
   const {collection} = useLoaderData();
+  //personalization: we set the user type to the collection title that the user is currently viewing
+  if (!getCookie('user_type)') && collection) {
+    setCookie('user_type', collection.title);
+  }
   return (
     <>
       <header className="grid w-full gap-8 py-8 justify-items-start">
